@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<title>Ambition in Motion</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> -->
+
+  
+
+<style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+/*      body {
+  background: #f7f6f3;
+  font-family: sans-serif;
+}*/
+.calendar {
+  position: absolute;
+  width: 280px;
+  left: 45%;
+  top: 50%;
+  margin: 50px 0px 0px -140px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ui-datepicker-header {
+  height: 50px;
+  line-height: 50px;
+  color: #b0aead;
+  background: #e9e5e3;
+  margin-bottom: 10px;
+}
+.ui-datepicker-prev,
+.ui-datepicker-next {
+  width: 20px;
+  height: 20px;
+  text-indent: 9999px;
+  border: 2px solid #b0aead;
+  border-radius: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  margin-top: 12px;
+}
+.ui-datepicker-prev {
+  float: left;
+  margin-left: 12px;
+}
+.ui-datepicker-prev:after {
+  transform: rotate(45deg);
+  margin: -43px 0px 0px 8px;
+}
+.ui-datepicker-next {
+  float: right;
+  margin-right: 12px;
+}
+.ui-datepicker-next:after {
+  transform: rotate(-135deg);
+  margin: -43px 0px 0px 6px;
+}
+.ui-datepicker-prev:after,
+.ui-datepicker-next:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-left: 2px solid #b0aead;
+  border-bottom: 2px solid #b0aead;
+}
+.ui-datepicker-prev:hover,
+.ui-datepicker-next:hover,
+.ui-datepicker-prev:hover:after,
+.ui-datepicker-next:hover:after {
+  border-color: #5ed1cc;
+}
+.ui-datepicker-title {
+  text-align: center;
+}
+.ui-datepicker-calendar {
+  width: 100%;
+  text-align: center;
+}
+.ui-datepicker-calendar thead tr th span {
+  display: block;
+  width: 40px;
+  color: #00a8b2;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+.ui-state-default {
+  display: block;
+  text-decoration: none;
+  color: #b5b5b5;
+  line-height: 40px;
+  font-size: 12px;
+}
+.ui-state-default:hover {
+  background: rgba(0,0,0,0.02);
+}
+.ui-state-highlight {
+  color: #8dd391;
+}
+.ui-state-active {
+  color: #5ed1cc;
+}
+.ui-datepicker-unselectable .ui-state-default {
+  color: #eee;
+  border: 2px solid transparent;
+}
+
+    </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Amition In Motion</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">{{ user_name }}</a></li>
+      </ul>
+    </div>
+
+  </nav>
+
+<div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="row-offcanvas row-offcanvas-right">
+            <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebarLeft" role="navigation">
+
+                <div class="well sidebar-nav">
+                    <ul class="nav">
+                        <li>Left Sidebar</li>
+                        <li><a href="#"> </a></li>
+                        <li><a href={%url "home" %}>Home</a></li>
+                        <li class="active"><a href={%url "profile" %}>Profile</a></li>
+                        <li><a href="#">People</a></li>
+                        <li><a href="#">Message</a></li>
+                        <li><a href={%url "calender" %}>Calender</a></li>
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/span-->
+
+            <div class="col-xs-12 col-sm-8">
+            	<div></div>
+            	<div></div>
+
+            	<div id="datepicker" class="calendar"></div>
+
+                
+                    <!--/span-->
+                </div>
+                <!--/row-->
+            </div>
+            <!--/span-->
+
+            <div class="col-xs-6 col-sm-2 sidebar-offcanvas" id="sidebarRight" role="navigation">
+
+                <div class="well sidebar-nav">
+                    <ul class="nav">
+                        <li>Right Sidebar</li>
+                        <li class="active"><a href="#"> </a></li>
+                        <li>To Do List</li>
+                        <li class="active"><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/span-->
+        </div>
+
+    </div>
+    <!--/row-->
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <hr>
+
+    <footer>
+        <p>© Ambition In Motion 2013</p>
+    </footer>
+
+</div>
+
+  
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://code.jquery.com/ui/1.10.3/jquery-ui.js'></script>
+
+
+    <script src="{% static "assets/js/index.js" %}"></script>
+
+</body>
+</html>
