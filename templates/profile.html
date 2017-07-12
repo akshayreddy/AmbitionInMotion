@@ -50,7 +50,10 @@
 
                 <div class="jumbotron">
                     <div class="container-fluid">
-                    <img src="https://s-media-cache-ak0.pinimg.com/736x/e5/a0/69/e5a06942fa42823c88be5f3a834e063d--fantastic-art-bat-family.jpg" class="img-rounded" alt="Responsive image" width="250" height="250">
+                    <!-- <img src="https://s-media-cache-ak0.pinimg.com/736x/e5/a0/69/e5a06942fa42823c88be5f3a834e063d--fantastic-art-bat-family.jpg" class="img-rounded" alt="Responsive image" width="250" height="250"> -->
+                    {% if instance.thumbnail %}
+                    <img src="{{ instance.thumbnail.url }}" class="img-rounded" alt="Responsive image" width="250" height="250">
+                    {% endif %}
                     <h4>{{ instance.name }}</h4>
                     <h6>{{ request.user}}</h6>
                     <br>

@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^profile/$',views.profile, name='profile'),
     url(r'^profile_edit/$',views.profile_edit, name='profile_edit'),
     url(r'^admin/', include(admin.site.urls)),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

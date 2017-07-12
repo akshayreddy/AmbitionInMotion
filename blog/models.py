@@ -16,7 +16,7 @@ class ProfileInfo(models.Model):
 	url= models.CharField(max_length=300, blank=True, null=True)
 	location= models.CharField(max_length=300, blank=True, null=True)
 	timestamp= models.DateTimeField(auto_now_add=False, auto_now=True)
-	thumbnail = models.FileField(blank=True, null=True)
+	thumbnail = models.FileField(upload_to="profile_image", blank=True)
 
 
 	def __str__(self):
