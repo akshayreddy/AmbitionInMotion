@@ -1,15 +1,4 @@
 
-
-<!-- <form method="POST" action="">{% csrf_token %}
-
-{{form.as_p}}
-    
-<input type="submit" name="Update Profile">
-
-</form> -->
-
-<!-- You can create scalable multi-column layouts with up to 12 columns. Scaling is focused on screens < 768px, >= 768px, >=992px and >1200px -->
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +19,7 @@
       </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">{{ user_name }}</a></li>
+        <li class="active"><a href="#">{{ request.user }}</a></li>
       </ul>
     </div>
 
