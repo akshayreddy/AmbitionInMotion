@@ -1,21 +1,23 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
 from .models import ProfileInfo, Appointments
+import time, datetime
 
 # Create your views here.
 
 from .forms import ProfileInfoForm, AppointmentsForm
 
 def home(request):
+	users = User.objects.all()
+	print(users)
 	return render(request, "home.html", {})
 
 def calender(request):
 	all_events= Appointments.objects.all()
 
-	for i in all_events:
-		print(i)
-
 	context ={
 	"events": all_events,
+	"curr_date": datetime.datetime.today().strftime('%Y-%m-%d'),
 	}
 
 	return render(request, "calender.html", context)
