@@ -3,6 +3,7 @@
 from django import forms
 from .models import ProfileInfo
 from .models import Appointments
+from .models import Forum
 
 
 class ProfileInfoForm(forms.ModelForm):
@@ -15,5 +16,8 @@ class AppointmentsForm(forms.ModelForm):
  		model = Appointments
  		fields = ['title','start','end','color']
 
-
-
+class ForumForm(forms.ModelForm):
+ 	class Meta:
+ 		model = Forum
+ 		fields = ['question','image']
+ 		exclude = ['created_by']

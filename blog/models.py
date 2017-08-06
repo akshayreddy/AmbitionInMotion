@@ -39,6 +39,15 @@ class Appointments(models.Model):
 		return self.title
 
 
+class Forum(models.Model):
+
+	question=models.CharField(max_length=500, blank=False, null=False)
+	image= models.URLField(max_length=500, blank=True,verbose_name="Image URL")
+	created= models.DateTimeField(auto_now_add=True)
+	created_by= models.CharField(max_length=50, blank=True, null=True)
+
+	class Meta:
+		ordering = ('-created',)
 
 
 #python manage.py makemigrations

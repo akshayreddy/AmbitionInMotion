@@ -23,6 +23,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^$',views.home, name='home'),
     url(r'^calender/$',views.calender, name='calender'),
+    url(r'^forum/$',views.forum, name='forum'),
+    url(r'^post/$',views.post_question, name='post_question'),
     url(r'^profile/$',views.profile, name='profile'),
     url(r'^profile_edit/$',views.profile_edit, name='profile_edit'),
     url(r'^appointment/$',views.appointment_page, name='appointment'),

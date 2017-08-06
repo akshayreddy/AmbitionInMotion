@@ -1,16 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
-from .models import ProfileInfo, Appointments
+from .models import ProfileInfo, Appointments, Forum
 import time, datetime
 
 # Create your views here.
 
-from .forms import ProfileInfoForm, AppointmentsForm
+from .forms import ProfileInfoForm, AppointmentsForm, ForumForm
 
 def home(request):
 	users = User.objects.all()
 	print(users)
 	return render(request, "home.html", {})
+
+def forum(request):
+
+	all_events=Forum.objects.all()
+
+	context = {
+	"questions": all_events,
+
+	}
+	return render(request, "forum.html", context)
 
 def calender(request):
 	all_events= Appointments.objects.all()
@@ -69,4 +79,19 @@ def appointment_page(request):
 	}
 
 	return render(request, "appointment.html", context)
+
+def post_question(request):
+
+	form = ForumForm(request.POST, request.FILES or None)
+
+	if form.is_valid():
+
+		instance = form.save(commit=False)
+		instance.created_by = request.user
+		instance.save()
+
+	context = {
+	   "form":form,
+	}
+	return render(request, "post_question.html", context)
 
