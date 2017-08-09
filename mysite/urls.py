@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from blog import views
+from blog.views import PostAnswers, UserAnswers
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,10 +25,12 @@ urlpatterns = [
     url(r'^$',views.home, name='home'),
     url(r'^calender/$',views.calender, name='calender'),
     url(r'^forum/$',views.forum, name='forum'),
-    url(r'^post/$',views.post_question, name='post_question'),
+    url(r'^post_questions/$',views.post_question, name='post_question'),
+    #url(r'^post_answers/(?P<current_pk>\d+)/',UserAnswers.as_view(), name='post_answers'),
     url(r'^profile/$',views.profile, name='profile'),
     url(r'^profile_edit/$',views.profile_edit, name='profile_edit'),
     url(r'^appointment/$',views.appointment_page, name='appointment'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^answer/(?P<pk>\d+)/', PostAnswers.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

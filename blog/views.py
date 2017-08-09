@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
-from .models import ProfileInfo, Appointments, Forum
+from .models import ProfileInfo, Appointments, Forum, ForumAnswers
 import time, datetime
+from django.views import View
 
 # Create your views here.
 
-from .forms import ProfileInfoForm, AppointmentsForm, ForumForm
+from .forms import ProfileInfoForm, AppointmentsForm, ForumForm, ForumAnswerForm
 
 def home(request):
 	users = User.objects.all()
@@ -51,6 +52,17 @@ def profile(request):
 	}
 	return render(request, "profile.html", context)
 
+
+class PostAnswers(View):
+
+	def get(self, request, pk):
+		queryset = Forum.objects.get(pk=pk)
+		result = queryset.answers.all()
+		print(pk)
+
+		return render(request,"answers.html", {"answers":result, "current_pk":pk})
+
+
 def profile_edit(request):
 
 	form = ProfileInfoForm(request.POST, request.FILES or None)
@@ -95,3 +107,5 @@ def post_question(request):
 	}
 	return render(request, "post_question.html", context)
 
+def UserAnswers():
+	pass

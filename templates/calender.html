@@ -95,15 +95,19 @@
                         <li><a href={%url "forum" %}>Forum</a></li>
                     </ul>
                 </div>
-                <!--/.well -->
+                
+                <div>
+                    <form action={%url "appointment" %}>
+                        <input type="submit" name="btn btn-primary" value="Add Appointment">
+                    </form>
+
+                </div>
             </div>
     <br>
     
 
     <div id='calendar'></div>
-    <form action={%url "appointment" %}>
-        <input type="submit" name="btn btn-primary" value="Add Appointment">                  
-     </form>
+
 
 </body>
 </html>

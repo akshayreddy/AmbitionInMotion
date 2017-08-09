@@ -1,9 +1,7 @@
 
 
 from django import forms
-from .models import ProfileInfo
-from .models import Appointments
-from .models import Forum
+from .models import ProfileInfo, Appointments, Forum, ForumAnswers
 
 
 class ProfileInfoForm(forms.ModelForm):
@@ -19,5 +17,12 @@ class AppointmentsForm(forms.ModelForm):
 class ForumForm(forms.ModelForm):
  	class Meta:
  		model = Forum
- 		fields = ['question','image']
+ 		fields = ['question']		         # Add number of fields required
  		exclude = ['created_by']
+
+
+class ForumAnswerForm(forms.ModelForm):
+	class Meta:
+		model = ForumAnswers
+		fields = ['answer']                  # Add number of fields required
+		exclude = ['created_by']
