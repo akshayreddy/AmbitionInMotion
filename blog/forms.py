@@ -24,5 +24,5 @@ class ForumForm(forms.ModelForm):
 class ForumAnswerForm(forms.ModelForm):
 	class Meta:
 		model = ForumAnswers
-		fields = ['answer']                  # Add number of fields required
+		fields = ['answer','question_id']                  # Add number of fields required
 		exclude = ['created_by']

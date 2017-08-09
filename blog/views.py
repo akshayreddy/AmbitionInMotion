@@ -55,10 +55,11 @@ def profile(request):
 
 class PostAnswers(View):
 
+
+
 	def get(self, request, pk):
 		queryset = Forum.objects.get(pk=pk)
 		result = queryset.answers.all()
-		print(pk)
 
 		return render(request,"answers.html", {"answers":result, "current_pk":pk})
 
@@ -107,5 +108,17 @@ def post_question(request):
 	}
 	return render(request, "post_question.html", context)
 
-def UserAnswers():
-	pass
+
+def user_answers(request):
+	form = ForumAnswerForm(request.POST, request.FILES or None)
+
+	if form.is_valid():
+
+		instance = form.save(commit=False)
+		instance.answered_by = request.user
+		instance.save()
+
+	context = {
+	   "form":form,
+	}
+	return render(request, "user_answers.html", context)
